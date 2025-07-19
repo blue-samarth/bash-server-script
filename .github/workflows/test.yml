@@ -1,0 +1,38 @@
+name: Logger Tests
+
+on:
+  push:
+    branches: [ main, master, development ]
+  pull_request:
+    branches: [ main, master, development ]
+  workflow_dispatch:
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Install Bash 5.1
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y bash=5.1*
+
+        - name: Run Tests
+          run: |
+            chmod +x tests/*.sh
+            exit_code=0
+            for test_file in tests/*.sh; do
+            if [ -f "$test_file" ]; then
+                echo "Running $test_file..."
+                if ! ./"$test_file"; then
+                echo "❌ $test_file failed"
+                exit_code=1
+                else
+                echo "✅ $test_file passed"
+                fi
+            fi
+            done
+            exit $exit_code
+
