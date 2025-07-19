@@ -5,9 +5,11 @@
 # Author: Blue-sam
 # Version: 1.1
 
-# Capture the name of the current script for use in logs
-SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+# Capture the name of the script for use in logs
+# If sourced, use the name of the calling script; if executed directly, use this script's name.
+SCRIPT_NAME="${BASH_SOURCE[1]:-${BASH_SOURCE[0]##*/}}"
 
+# Users can override SCRIPT_NAME after sourcing this script if needed.
 fatal() {
     echo -e "\033[1;31m[FATAL]\033[0m $(date '+%Y-%m-%d %H:%M:%S') [$SCRIPT_NAME:${BASH_LINENO[1]}] $*" >&2
     exit 1
