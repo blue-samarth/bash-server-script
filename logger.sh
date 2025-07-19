@@ -37,7 +37,7 @@ if [[ "$LOG_USE_COLOR" == "true" && ( -t 1 || -t 2 ) ]]; then
     LOG_BOLD='\033[1m'
     LOG_RESET='\033[0m'
 else
-    LOG_RED=''; LOG_GREEN=''; LOG_YELLOW=''; LOG_BLUE=''; LOG_BOLD=''; LOG_RESET=''
+    LOG_RED=''; LOG_BRIGHT_RED=''; LOG_GREEN=''; LOG_YELLOW=''; LOG_BLUE=''; LOG_BOLD=''; LOG_RESET=''
 fi
 
 # Validate log level first it is an integer then check if it is within the valid range
