@@ -27,6 +27,8 @@ info() {
     echo -e "\033[0;32m[INFO]\033[0m $(date '+%Y-%m-%d %H:%M:%S') [$SCRIPT_NAME:${BASH_LINENO[1]}] $*"
 }
 
+# Debug logging function
+# To enable debug logging, set the DEBUG environment variable to "true" (case-insensitive).
 debug() {
     [[ "${DEBUG,,}" == "true" ]] && echo -e "\033[0;34m[DEBUG]\033[0m $(date '+%Y-%m-%d %H:%M:%S') [$SCRIPT_NAME:${BASH_LINENO[1]}] $*"
 }
