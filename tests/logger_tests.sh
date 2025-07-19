@@ -2,7 +2,7 @@
 # set -euo pipefail
 
 CURRENT_FILE="file_logging_tests.sh"
-FILE_TO_BE_TESTED="../logger.sh"
+FILE_TO_BE_TESTED="./logger.sh"
 TEST_DIR="./test_logs"
 mkdir -p "$TEST_DIR"
 
